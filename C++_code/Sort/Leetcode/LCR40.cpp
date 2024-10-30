@@ -6,9 +6,6 @@ public:
     int maximumScore(vector<int>& cards, int cnt) {
         int len=cards.size();
         sort(cards.begin(),cards.end(),greater<int>());
-        // for(int i=0;i<len/2;i++){
-        //   swap(cards[i],cards[len-i-1]);
-        // }
         int s = 0;
         for(int i=1;i<=cnt;i++){
           s+=cards[i-1];
@@ -18,17 +15,17 @@ public:
         }
         auto replaced_sum = [&](int x) -> int {
             for (int i = cnt; i < cards.size(); i++) {
-                if (cards[i] % 2 != x % 2) { // 找到一个最大的奇偶性和 x 不同的数
-                    return s - x + cards[i]; // 用 cards[i] 替换 s
+                if (cards[i] % 2 != x % 2) { 
+                    return s - x + cards[i]; 
                 }
             }
             return 0;
-        };
+        };//匿名函数
         int x = cards[cnt - 1];
-        int ans = replaced_sum(x); // 替换 x
-        for (int i = cnt - 2; i >= 0; i--) { // 前 cnt-1 个数
-            if (cards[i] % 2 != x % 2) { // 找到一个最小的奇偶性和 x 不同的数
-                ans = max(ans, replaced_sum(cards[i])); // 替换
+        int ans = replaced_sum(x); 
+        for (int i = cnt - 2; i >= 0; i--) { 
+            if (cards[i] % 2 != x % 2) {
+                ans = max(ans, replaced_sum(cards[i])); 
                 break;
             }
         }
