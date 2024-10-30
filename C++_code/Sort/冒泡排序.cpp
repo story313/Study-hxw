@@ -1,29 +1,37 @@
-#include<iostream>
-#include<vector>
+#include <bits/stdc++.h>  
 using namespace std;
-void swap(int* a,int* b){
-    int* temp=a;
+void swap(int &a,int &b){
+    int s=a;
     a=b;
-    b=temp;
+    b=s;
 }
-
-vector<int> BubbleSort(vector<int> arr){
-    if(arr.empty()||arr.size()<2){ //当arr为空,或只有一个元素
-        return arr;
+void bobasort(vector<int>& a,int &n) {
+    if(a.empty()||a.size()<2){ 
+        return;
     }
-    for(int i=0;i<arr.size()-1;i++){
-        for(int j=0;j<arr.size()-i-1;j++){
-            if(arr[j]>arr[j+1]){
-                swap(arr[j],arr[j+1]);
+    for(int i=0;i<n-1;i++){
+        bool isswap=false;
+        for(int j=n-1;j>i;j--){
+            if(a[j]<a[j-1]){
+                swap(a[j],a[j-1]);
+                isswap=true;
             }
         }
+        if(isswap==false){
+            return;
+        }
     }
-    return arr;
 }
 int main(){
-    vector<int> arr={1,3,5,4,2};
-    arr=BubbleSort(arr);
-    for(auto res:arr){
-        cout<<res;
+    int n;
+    cin>>n;
+    vector <int> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
+    bobasort(a,n);
+    for(auto res:a){
+        cout<<res<<" ";
+    }
+    return 0;
 }

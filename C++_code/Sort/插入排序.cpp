@@ -1,24 +1,18 @@
-#include<iostream>
-#include<vector>
+#include <bits/stdc++.h>  
 using namespace std;
-void swap(int* a,int* b){
-    int* temp=a;
-    a=b;
-    b=temp;
-}
-
-vector<int> InsertionSort(vector<int> arr){
-    if(arr.size()<2){
-        return arr;
+void insertionSort(vector<int>& a,int n) {  
+    if(a.empty()||a.size()<2){ 
+        return;
     }
-    for(int i=1;i<arr.size();i++){
-        for(int j=i;j>0;j--){
-            if(arr[j-1]>arr[j]){
-                swap(arr[j-1],arr[j]);                
-            }
+    for (int i=1;i<n;i++){ 
+        int key=a[i]; 
+        int j=i-1;  
+        while (j>=0&&a[j]>key) {  
+            a[j+1]=a[j];  
+            j--;  
         }
-    }
-    return arr;
+        a[j+1]=key;
+    }  
 }
 vector<int> BinaryInsertionSort(vector<int> arr){
     if(arr.size()<2){
@@ -54,15 +48,15 @@ vector<int> BinaryInsertionSort(vector<int> arr){
     return arr;
 }
 int main(){
-    vector<int> arr={1,3,5,4,2};
-    arr=InsertionSort(arr);
-    for(auto res:arr){
-        cout<<res;
+    int n;
+    cin>>n;
+    vector <int> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
-    cout<<endl;
-    vector<int> arr2={1,3,5,4,2};
-    arr2=BinaryInsertionSort(arr2);
-    for(auto res:arr){
-        cout<<res;
+    insertionSort(a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
     }
+    return 0;
 }

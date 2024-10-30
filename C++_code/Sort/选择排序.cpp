@@ -1,35 +1,34 @@
-#include<iostream>
-#include<vector>
+#include <bits/stdc++.h>  
 using namespace std;
-
-void swap(int* a,int* b){
-    int* temp=a;
+void swap(int &a,int &b){
+    int s=a;
     a=b;
-    b=temp;
+    b=s;
 }
-
-vector<int> SelectionSort(vector<int> arr){
-    if(arr.empty()||arr.size()<2){ //当arr为空,或只有一个元素
-        return arr;
+void selectsort(vector<int>& a,const int &n) {
+    if(a.empty()||a.size()<2){ 
+        return;
     }
-    for(int i=0;i<arr.size();i++){
-        int minIndex=i;
-        for(int j=i+1;j<arr.size();j++){
-            minIndex=arr[j]<arr[minIndex]?j:minIndex;  //每次找到最小的元素
-
+    for(int j=n-1;j>=0;j--){
+        int max=0;
+        for(int i=1;i<=j;i++){
+            if(a[i]>a[max]){
+                max=i;
+            }
         }
-        swap(arr[minIndex],arr[i]);
-    }   
-    return arr;
+        swap(a[j],a[max]);
+    }
 }
 int main(){
-    vector<int> arr(6);
-    for(int i=0;i<6;i++){
-        cin>>arr[i];
+    int n;
+    cin>>n;
+    vector <int> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
     }
-    arr=SelectionSort(arr);
-    for(int i=0;i<6;i++){
-        cout<<arr[i];
+    selectsort(a,n);
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
     }
-
+    return 0;
 }
