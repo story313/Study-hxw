@@ -1,14 +1,11 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
-// 交换两个元素的值
 void swap(int& a, int& b) {
     int temp = a;
     a = b;
     b = temp;
 }
-
 // 调整一个数组，使其满足堆的性质
 // 参数说明：
 // array -- 待调整的数组
@@ -35,7 +32,6 @@ void heap_adjust(vector<int>& array, int start, int end, bool flag) {
         }
     }
 }
-
 // 堆排序
 // 参数说明：
 // array -- 待排序的数组
@@ -52,31 +48,23 @@ void heap_sort(vector<int>& array, bool flag) {
         heap_adjust(array, 0, i, flag);
     }
 }
-
 int main() {
-    // 测试用例
-    vector<int> nums = {8, 5, 4, 2, 1};
-    // 输出原始数组
-    cout << "The original array is: ";
-    for (int num : nums) {
-        cout << num << " ";
+    int n;
+    cin>>n;
+    vector<int>nums(n);
+    for(int i=0;i<n;i++){
+        cin>>nums[i];
     }
-    cout << endl;
-    // 升序排序
     heap_sort(nums, true);
-    // 输出升序结果
-    cout << "The ascending order is: ";
+    cout << "升序: ";
     for (int num : nums) {
         cout << num << " ";
     }
     cout << endl;
-    // 降序排序
     heap_sort(nums, false);
-    // 输出降序结果
-    cout << "The descending order is: ";
+    cout << "降序: ";
     for (int num : nums) {
         cout << num << " ";
     }
-    cout << endl;
     return 0;
 }

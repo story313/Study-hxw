@@ -1,77 +1,5 @@
-// #include<iostream>
-// #include<algorithm>
-// #include<cmath>
-// using namespace std;
-// int maxbits(int arr[],int n){
-//     int Max=arr[0];
-//     for(int i=0;i<n;i++){
-//         Max=max(Max,arr[i]);
-//     }
-//     int res=0;
-//     while(Max!=0){
-//         res++;
-//         Max/=10;
-//     }
-//     return res;
-// }
-// int getDigit(int x,int d){
-//     return ((x/((int)pow(10,d-1)))%10);
-// }
-// void radixSort(int arr[],int L,int R,int digit){
-    
-//     const int radix=10;
-//     int i=0,j=0;
-//     int *bucket=new int [R-L+1];
-//     for(int d=1;d<=digit;d++){
-        
-//         int count[radix];
-        
-//         for(i=L;i<=R;i++){   //进桶，记录每个位的个数
-//             j=getDigit(arr[i],d);
-//             count[j]++;
-            
-//         }
-//         for(i=1;i<radix;i++){  //处理成前缀和
-//             count[i]=count[i]+count[i-1];
-            
-//         }
-    
-//         for(i=R;i>=L;i--){
-//             j=getDigit(arr[i],d);
-//             bucket[count[j]-1]=arr[i];
-//             count[j]--;
-            
-//         }
-        
-//         for(i=L,j=0;i<=R;i++,j++){
-//             arr[i]=bucket[j];
-//             cout<<"2";
-//         }
-//     }
-// }
-
-// int main() {
-//     int n; // 输入的整数个数
-//     cin >> n; // 输入整数个数
-//     int nums[n]; // 创建一个存储整数的向量
-//     for (int i = 0; i < n; i++) {
-//         cin >> nums[i]; // 输入每个整数
-//     }
-//     int maxbit=maxbits(nums,n);
-//     radixSort(nums,0,n-1,maxbit); // 对整数进行基数排序
-//     for (int i=0;i<n;i++) {
-//         cout << nums[i] << " "; // 输出排序后的整数
-//     }
-//     cout << endl;
-//     return 0;
-// }
-
-#include <iostream>
-#include <vector>
-#include <queue>
-#include<cmath>
+#include <bits/stdc++.h>
 using namespace std;
-
 // 定义一个基数排序函数，参数为一个整数向量
 void radix_sort(vector<int>& nums) {
     // 找出向量中的最大值
@@ -104,7 +32,6 @@ void radix_sort(vector<int>& nums) {
         }
     }
 }
-
 int main() {
     int n; // 输入的整数个数
     cin >> n; // 输入整数个数

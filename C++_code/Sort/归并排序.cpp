@@ -16,11 +16,9 @@ void merge(vector<int> &arr,int L,int M,int R){
     while (p2<=R){
         help[i++]=arr[p2++];
     }
-    
     for(i=0;i<R-L+1;i++){ //返回至原数组
         arr[L+i]=help[i];
     }
-    
 }
 void mergeSort(vector<int> &arr,int L,int R){
     if(arr.empty()||L==R){
@@ -31,7 +29,6 @@ void mergeSort(vector<int> &arr,int L,int R){
     mergeSort(arr,mid+1,R);//右
     merge(arr,L,mid,R); //归并
     return;
-
 }
 int main(){
     int n;

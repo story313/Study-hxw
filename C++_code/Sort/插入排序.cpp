@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>  
 using namespace std;
+
 void insertionSort(vector<int>& a,int n) {  
     if(a.empty()||a.size()<2){ 
         return;

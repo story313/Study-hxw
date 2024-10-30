@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
 // 定义一个计数排序函数，参数为一个整数向量
 void counting_sort(vector<int>& nums) {
     // 找出向量中的最大值和最小值
@@ -21,7 +20,8 @@ void counting_sort(vector<int>& nums) {
     int index = 0;
     for (int i = 0; i < count.size(); i++) {
         while (count[i] > 0) {
-            nums[index++] = i + min_num;
+            nums[index] = i + min_num;
+            index++;
             count[i]--;
         }
     }
